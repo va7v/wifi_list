@@ -3,7 +3,9 @@ import 'dart:async';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:wifi_scan/wifi_scan.dart';
-import 'package:network_info_plus/network_info_plus.dart';
+
+// инфо о текущей сети - не нужна
+// import 'package:network_info_plus/network_info_plus.dart';
 
 String? wifiName = '';
 
@@ -21,11 +23,11 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   List<WiFiAccessPoint> accessPoints = <WiFiAccessPoint>[];
 
-  Future<void> setNetwork() async {
-    final info = NetworkInfo();
-    wifiName = await info.getWifiName();
-    print('wifiName $wifiName');
-  }
+  // Future<void> setNetwork() async {
+  //   final info = NetworkInfo();
+  //   wifiName = await info.getWifiName();
+  //   print('wifiName $wifiName');
+  // }
 
   Future<void> _getScannedResults(BuildContext context) async {
     final results = await WiFiScan.instance.getScannedResults();
@@ -60,7 +62,7 @@ class _MyAppState extends State<MyApp> {
                       label: const Text('Поиск сетей'),
                       onPressed: () async {
                         _getScannedResults(context);
-                        setNetwork();
+                        // setNetwork();
                       }
                     ),
 
